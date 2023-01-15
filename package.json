@@ -8,6 +8,7 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "test": "jest",
+    "check-types": "tsc --noEmit",
     "lint": "eslint src"
   },
   "dependencies": {
