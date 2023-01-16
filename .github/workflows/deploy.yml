@@ -5,6 +5,10 @@ on:
     branches:
       - main
 
+env:
+  VITE_CLIENT_ID: f091dbda38a9498090618e861746f72d
+  VITE_REDIRECT_URI: https://jakebottrall.github.io/your-favourite-year-in-music/callback
+
 jobs:
   build:
     name: Build
