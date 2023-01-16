@@ -6,4 +6,5 @@ import eslint from 'vite-plugin-eslint';
 export default defineConfig({
   plugins: [eslint(), react()],
   server: { port: 3000 },
+  base: '/your-favourite-year-in-music/',
 });
