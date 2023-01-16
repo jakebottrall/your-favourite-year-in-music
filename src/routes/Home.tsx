@@ -1,7 +1,10 @@
+import { CalendarDatum } from '@nivo/calendar';
 import { useEffect, useState } from 'react';
+import { CalendarChart } from '../components/CalendarChart';
 import { Loading } from '../components/Loading';
 import { useRedirect } from '../hooks/useRedirect';
 import { getAllSavedTracks } from '../services/getAllSavedTracks';
+import { reduceTracksIntoDataset } from '../utils/reduceTracksIntoDataset';
 
 export interface HomeProps {
   isAuthed?: boolean;
@@ -14,6 +17,8 @@ export const Home = (props: HomeProps) => {
   const [favouriteYear, setFavouriteYear] = useState<string>('1994');
   const [favouriteYearCount, setFavouriteYearCount] = useState<number>(0);
 
+  const [calendarData, setCalendarData] = useState<CalendarDatum[]>([]);
+
   const [isLoading, setIsLoading] = useState(true);
 
   useRedirect(!isAuthed, '/login');
@@ -22,26 +27,18 @@ export const Home = (props: HomeProps) => {
     const getStats = async () => {
       try {
         const tracks = await getAllSavedTracks();
+        const dataset = reduceTracksIntoDataset(tracks);
 
-        const stats = tracks.reduce(
-          (a, c) => {
-            const year = c.album.release_date.split('-')[0];
-            const count = (a.years.get(year) || 0) + 1;
+        setFavouriteYear(dataset[0].year);
+        setFavouriteYearCount(dataset[0].count);
 
-            if (count > a.favouriteYearCount) {
-              a.favouriteYear = year;
-              a.favouriteYearCount = count;
-            }
+        const topThreeYears = dataset.slice(0, 3);
 
-            a.years.set(year, count);
+        const calendarDataset = topThreeYears
+          .reduce((a, c) => [...a, ...c.data], [] as CalendarDatum[])
+          .sort((a, b) => new Date(b.day).valueOf() - new Date(a.day).valueOf());
 
-            return a;
-          },
-          { years: new Map<string, number>(), favouriteYear: '', favouriteYearCount: 0 },
-        );
-
-        setFavouriteYear(stats.favouriteYear);
-        setFavouriteYearCount(stats.favouriteYearCount);
+        setCalendarData(calendarDataset);
       } catch (error) {
         onError();
       } finally {
@@ -63,10 +60,11 @@ export const Home = (props: HomeProps) => {
           Your Favourite Year In Music was {favouriteYear}
         </h1>
         <p className='text-xl font-light mb-1 text-center'>
-          You have liked {favouriteYearCount} song{favouriteYearCount > 1 ? 's' : ''} from this
-          year.
+          You liked {favouriteYearCount} song{favouriteYearCount > 1 ? 's' : ''} in {favouriteYear}.
         </p>
       </div>
+      <h2 className='text-3xl font-light mb-1'>Your Top 3 Years</h2>
+      <CalendarChart data={calendarData} />
     </div>
   );
 };
