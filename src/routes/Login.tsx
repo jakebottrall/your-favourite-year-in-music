@@ -19,7 +19,7 @@ export const Login = (props: LoginProps) => {
   return (
     <div className='h-screen w-screen flex flex-col justify-center items-center'>
       <div className='mb-10'>
-        <h1 className='text-5xl font-light mb-1'>Your Favourite Year In Music</h1>
+        <h1 className='text-5xl font-light mb-1 text-center'>Your Favourite Year In Music</h1>
       </div>
       <a
         className='flex justify-center items-center border-2 border-white p-2 text-xl hover:text-green-400 hover:border-green-400 transition-all'
