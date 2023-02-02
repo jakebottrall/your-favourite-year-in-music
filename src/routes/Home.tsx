@@ -54,12 +54,12 @@ export const Home = (props: HomeProps) => {
   }
 
   return (
-    <div className='h-screen w-screen flex flex-col justify-center items-center'>
+    <div className='flex h-screen w-screen flex-col items-center justify-center'>
       <div className='mb-10'>
-        <h1 className='text-5xl font-light text-center my-5'>
+        <h1 className='my-5 text-center text-5xl font-light'>
           Your Favourite Year In Music was {favouriteYear}
         </h1>
-        <p className='text-xl font-light mb-1 text-center'>
+        <p className='mb-1 text-center text-xl font-light'>
           You liked {favouriteYearCount} song{favouriteYearCount > 1 ? 's' : ''} in {favouriteYear}.
         </p>
       </div>

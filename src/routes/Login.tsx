@@ -17,12 +17,12 @@ export const Login = (props: LoginProps) => {
   useRedirect(!!isAuthed, '/');
 
   return (
-    <div className='h-screen w-screen flex flex-col justify-center items-center'>
+    <div className='flex h-screen w-screen flex-col items-center justify-center'>
       <div className='mb-10'>
-        <h1 className='text-5xl font-light mb-1 text-center'>Your Favourite Year In Music</h1>
+        <h1 className='mb-1 text-center text-5xl font-light'>Your Favourite Year In Music</h1>
       </div>
       <a
-        className='flex justify-center items-center border-2 border-white p-2 text-xl hover:text-green-400 hover:border-green-400 transition-all'
+        className='flex items-center justify-center border-2 border-white p-2 text-xl transition-all hover:border-green-400 hover:text-green-400'
         href={url}
       >
         Login with Spotify
