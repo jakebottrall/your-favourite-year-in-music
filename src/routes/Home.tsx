@@ -2,17 +2,15 @@ import { CalendarDatum } from '@nivo/calendar';
 import { useEffect, useState } from 'react';
 import { CalendarChart } from '../components/CalendarChart';
 import { Loading } from '../components/Loading';
-import { useRedirect } from '../hooks/useRedirect';
 import { getAllSavedTracks } from '../services/getAllSavedTracks';
 import { reduceTracksIntoDataset } from '../utils/reduceTracksIntoDataset';
 
 export interface HomeProps {
-  isAuthed?: boolean;
   onError: () => void;
 }
 
 export const Home = (props: HomeProps) => {
-  const { isAuthed, onError } = props;
+  const { onError } = props;
 
   const [favouriteYear, setFavouriteYear] = useState<string>('1994');
   const [favouriteYearCount, setFavouriteYearCount] = useState<number>(0);
@@ -20,8 +18,6 @@ export const Home = (props: HomeProps) => {
   const [calendarData, setCalendarData] = useState<CalendarDatum[]>([]);
 
   const [isLoading, setIsLoading] = useState(true);
-
-  useRedirect(!isAuthed, '/login');
 
   useEffect(() => {
     const getStats = async () => {
@@ -40,6 +36,7 @@ export const Home = (props: HomeProps) => {
 
         setCalendarData(calendarDataset);
       } catch (error) {
+        console.log('🚀 ~ error', error);
         onError();
       } finally {
         setIsLoading(false);
