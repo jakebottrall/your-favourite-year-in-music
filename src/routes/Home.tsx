@@ -36,7 +36,6 @@ export const Home = (props: HomeProps) => {
 
         setCalendarData(calendarDataset);
       } catch (error) {
-        console.log('🚀 ~ error', error);
         onError();
       } finally {
         setIsLoading(false);
