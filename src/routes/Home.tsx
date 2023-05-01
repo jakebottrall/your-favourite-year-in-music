@@ -56,7 +56,8 @@ export const Home = (props: HomeProps) => {
           Your Favourite Year In Music was {favouriteYear}
         </h1>
         <p className='mb-1 text-center text-xl font-light'>
-          You liked {favouriteYearCount} song{favouriteYearCount > 1 ? 's' : ''} in {favouriteYear}.
+          You liked {favouriteYearCount} song{favouriteYearCount > 1 ? 's' : ''} released in{' '}
+          {favouriteYear}.
         </p>
       </div>
       <CalendarChart data={calendarData} />
