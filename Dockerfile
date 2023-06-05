@@ -8,6 +8,13 @@ WORKDIR /app
 COPY package.json pnpm-lock.yaml ./
 RUN pnpm install
 COPY ./ ./
+
+ARG VITE_CLIENT_ID
+ARG VITE_REDIRECT_URI
+
+ENV VITE_CLIENT_ID=$VITE_CLIENT_ID
+ENV VITE_REDIRECT_URI=$VITE_REDIRECT_URI
+
 RUN pnpm build
 
 # Start server
