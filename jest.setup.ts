@@ -1,4 +1,4 @@
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 
 jest.mock('./src/constants/env', () => ({
   VITE_CLIENT_ID: '1234qwerty',
