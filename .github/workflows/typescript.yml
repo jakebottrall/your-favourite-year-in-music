@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 jobs:
-  build:
+  typescript:
     runs-on: ubuntu-latest
     strategy:
       matrix:

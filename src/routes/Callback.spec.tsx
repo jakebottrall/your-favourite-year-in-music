@@ -1,16 +1,20 @@
 import { render } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { Callback } from './Callback';
 
 let locationObject = { hash: '' };
 
-const mockedNavigate = jest.fn();
+const mockedNavigate = vi.fn();
 
-jest.mock('react-router-dom', () => ({
-  ...(jest.requireActual('react-router-dom') as any),
-  useNavigate: () => mockedNavigate,
-  useLocation: () => locationObject,
-}));
+vi.mock('react-router-dom', async () => {
+  const router = await vi.importActual<typeof import('react-router-dom')>('react-router-dom');
+  return {
+    ...router,
+    useNavigate: () => mockedNavigate,
+    useLocation: () => locationObject,
+  };
+});
 
 beforeEach(() => {
   mockedNavigate.mockClear();
@@ -18,7 +22,7 @@ beforeEach(() => {
 
 describe('<Callback/>', () => {
   it('renders', () => {
-    const { container } = render(<Callback onAuth={jest.fn()} />, {
+    const { container } = render(<Callback onAuth={vi.fn()} />, {
       wrapper: BrowserRouter,
     });
 
@@ -31,7 +35,7 @@ describe('<Callback/>', () => {
     });
 
     it('fires onAuth', () => {
-      const mockOnAuth = jest.fn();
+      const mockOnAuth = vi.fn();
 
       render(<Callback onAuth={mockOnAuth} />, { wrapper: BrowserRouter });
 
@@ -39,9 +43,9 @@ describe('<Callback/>', () => {
     });
 
     it('sets the token in the local storage', () => {
-      const spy = jest.spyOn(Storage.prototype, 'setItem');
+      const spy = vi.spyOn(Storage.prototype, 'setItem');
 
-      render(<Callback onAuth={jest.fn()} />, { wrapper: BrowserRouter });
+      render(<Callback onAuth={vi.fn()} />, { wrapper: BrowserRouter });
 
       expect(localStorage.setItem).toHaveBeenCalledWith('access_token', 'asdf');
 
@@ -49,7 +53,7 @@ describe('<Callback/>', () => {
     });
 
     it('navigates to "/"', () => {
-      render(<Callback onAuth={jest.fn()} />, { wrapper: BrowserRouter });
+      render(<Callback onAuth={vi.fn()} />, { wrapper: BrowserRouter });
 
       expect(mockedNavigate).toHaveBeenCalledWith('/');
     });
@@ -61,7 +65,7 @@ describe('<Callback/>', () => {
     });
 
     it('does not fire onAuth', () => {
-      const mockOnAuth = jest.fn();
+      const mockOnAuth = vi.fn();
 
       render(<Callback onAuth={mockOnAuth} />, { wrapper: BrowserRouter });
 
@@ -69,9 +73,9 @@ describe('<Callback/>', () => {
     });
 
     it('clears the local storage', () => {
-      const spy = jest.spyOn(Storage.prototype, 'clear');
+      const spy = vi.spyOn(Storage.prototype, 'clear');
 
-      render(<Callback onAuth={jest.fn()} />, { wrapper: BrowserRouter });
+      render(<Callback onAuth={vi.fn()} />, { wrapper: BrowserRouter });
 
       expect(localStorage.clear).toHaveBeenCalled();
 
@@ -79,7 +83,7 @@ describe('<Callback/>', () => {
     });
 
     it('navigates to "/login"', () => {
-      render(<Callback onAuth={jest.fn()} />, { wrapper: BrowserRouter });
+      render(<Callback onAuth={vi.fn()} />, { wrapper: BrowserRouter });
 
       expect(mockedNavigate).toHaveBeenCalledWith('/login');
     });

@@ -1,4 +1,4 @@
-name: jest
+name: vitest
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 jobs:
-  build:
+  vitest:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -27,5 +27,5 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Run jest
+      - name: Run tests
         run: pnpm test

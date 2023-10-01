@@ -1,13 +1,20 @@
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { Login } from './Login';
 
-const mockedNavigate = jest.fn();
+const locationObject = { hash: '' };
 
-jest.mock('react-router-dom', () => ({
-  ...(jest.requireActual('react-router-dom') as any),
-  useNavigate: () => mockedNavigate,
-}));
+const mockedNavigate = vi.fn();
+
+vi.mock('react-router-dom', async () => {
+  const router = await vi.importActual<typeof import('react-router-dom')>('react-router-dom');
+  return {
+    ...router,
+    useNavigate: () => mockedNavigate,
+    useLocation: () => locationObject,
+  };
+});
 
 beforeEach(() => {
   mockedNavigate.mockClear();
