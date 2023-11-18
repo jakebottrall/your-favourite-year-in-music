@@ -23,7 +23,7 @@
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-[![GPL 3.0 License][license-shield]][license-url]
+[![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 <!-- PROJECT LOGO -->
@@ -140,7 +140,7 @@ Don't forget to give the project a star! Thanks again!
 
 ## License
 
-Distributed under the GNU General Public License v3.0. See [LICENSE](LICENSE) for more information.
+Distributed under the MIT License. See [LICENSE](LICENSE) for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -168,6 +168,6 @@ Project Link: [https://github.com/jakebottrall/your-favourite-year-in-music](htt
 [issues-shield]: https://img.shields.io/github/issues/jakebottrall/your-favourite-year-in-music.svg?style=for-the-badge
 [issues-url]: https://github.com/jakebottrall/your-favourite-year-in-music/issues
 [license-shield]: https://img.shields.io/github/license/jakebottrall/your-favourite-year-in-music.svg?style=for-the-badge
-[license-url]: https://github.com/jakebottrall/your-favourite-year-in-music/blob/master/LICENSE.txt
+[license-url]: https://github.com/jakebottrall/your-favourite-year-in-music/blob/main/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/jakebottrall
