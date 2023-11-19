@@ -1,10 +1,16 @@
 {
   "compilerOptions": {
-    "composite": true,
-    "skipLibCheck": true,
+    "types": ["bun-types"],
+
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
+    "skipLibCheck": true,
+
+    "composite": true,
     "moduleResolution": "bundler",
     "allowSyntheticDefaultImports": true
   },
-  "include": ["vite.config.ts"]
+  "include": ["package.json", "vite.config.ts", "scripts"]
 }

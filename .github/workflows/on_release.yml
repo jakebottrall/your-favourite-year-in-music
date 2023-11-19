@@ -1,0 +1,25 @@
+name: On Release
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  update-deployment-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: 'deployment'
+          fetch-depth: 0
+
+      - name: Rebase with main
+        run: |
+          git rebase origin/main
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: 'deployment'
+          force: true
