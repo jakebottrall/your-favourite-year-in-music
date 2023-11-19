@@ -8,6 +8,7 @@
     "dev": "bunx --bun vite",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
+    "release": "bun scripts/release.ts",
     "test": "vitest",
     "types": "tsc --noEmit"
   },
