@@ -1,7 +1,7 @@
 {
   "name": "your-favourite-year-in-music-bun",
   "private": true,
-  "version": "0.0.0",
+  "version": "2023.11.1",
   "type": "module",
   "scripts": {
     "build": "bunx --bun vite build",
