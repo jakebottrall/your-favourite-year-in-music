@@ -2,8 +2,6 @@ import dayjs from 'dayjs';
 import prettier from 'prettier';
 import packageJSON from '../package.json';
 
-const workingDir = import.meta.dir.replace('src', '');
-
 const bumpVersions = async () => {
   const currentVersion = packageJSON.version;
   const currentVersionSplit = currentVersion.split('.');
@@ -22,10 +20,10 @@ const bumpVersions = async () => {
 
   console.log(`bumping versions to v${nextVersion}`);
 
-  const newRootPackageJSON = { ...packageJSON, version: nextVersion };
+  const updatedPackageJSON = JSON.stringify({ ...packageJSON, version: nextVersion });
+  const prettierPackageJSON = await prettier.format(updatedPackageJSON, { parser: 'json' });
 
-  await Bun.write(`${workingDir}/package.json`, JSON.stringify(newRootPackageJSON, null, 2));
-  await prettier.format(`${workingDir}/package.json`, { parser: 'json' });
+  await Bun.write(`${import.meta.dir.replace('/scripts', '')}/package.json`, prettierPackageJSON);
 
   console.log('versions bumped ✅');
 
