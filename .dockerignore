@@ -1,0 +1,14 @@
+.dockerignore
+.editorconfig
+.env
+.git
+.gitignore
+.idea
+.vscode
+coverage*
+dist
+Dockerfile*
+LICENSE
+Makefile
+node_modules
+README.md
