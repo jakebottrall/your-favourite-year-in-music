@@ -2,6 +2,7 @@
   "name": "your-favourite-year-in-music-bun",
   "private": true,
   "version": "2024.1.1",
+  "type": "module",
   "scripts": {
     "build": "bunx --bun vite build",
     "dev": "bunx --bun vite",
