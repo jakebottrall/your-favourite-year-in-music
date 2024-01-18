@@ -1,4 +1,4 @@
-import { CalendarDatum } from '@nivo/calendar';
+import { type CalendarDatum } from '@nivo/calendar';
 import { useEffect, useState } from 'react';
 import { CalendarChart } from '../components/CalendarChart';
 import { Loading } from '../components/Loading';
@@ -12,7 +12,7 @@ export interface HomeProps {
 export const Home = (props: HomeProps) => {
   const { onError } = props;
 
-  const [favouriteYear, setFavouriteYear] = useState<string>('1994');
+  const [favouriteYear, setFavouriteYear] = useState('1994');
   const [favouriteYearCount, setFavouriteYearCount] = useState<number>(0);
 
   const [calendarData, setCalendarData] = useState<CalendarDatum[]>([]);
@@ -25,8 +25,8 @@ export const Home = (props: HomeProps) => {
         const tracks = await getAllSavedTracks();
         const dataset = reduceTracksIntoDataset(tracks);
 
-        setFavouriteYear(dataset[0].year);
-        setFavouriteYearCount(dataset[0].count);
+        setFavouriteYear(dataset[0]?.year ?? '1994');
+        setFavouriteYearCount(dataset[0]?.count ?? 0);
 
         const topYear = dataset.slice(0, 1);
 
@@ -42,7 +42,7 @@ export const Home = (props: HomeProps) => {
       }
     };
 
-    getStats();
+    void getStats();
   }, [onError]);
 
   if (isLoading) {

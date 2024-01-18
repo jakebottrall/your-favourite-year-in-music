@@ -1,4 +1,4 @@
-import { Track } from 'spotify-web-api-ts/types/types/SpotifyObjects';
+import { type Track } from 'spotify-web-api-ts/types/types/SpotifyObjects';
 import { spotifyApi } from './spotifyApi';
 
 export const getAllSavedTracks = async () => {

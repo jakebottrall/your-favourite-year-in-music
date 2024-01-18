@@ -1,7 +1,7 @@
 import { SpotifyWebApi } from 'spotify-web-api-ts';
-import { VITE_CLIENT_ID, VITE_REDIRECT_URI } from '../env';
+import { env } from '../env';
 
 export const spotifyApi = new SpotifyWebApi({
-  clientId: VITE_CLIENT_ID,
-  redirectUri: VITE_REDIRECT_URI,
+  clientId: env.VITE_CLIENT_ID,
+  redirectUri: env.VITE_REDIRECT_URI,
 });

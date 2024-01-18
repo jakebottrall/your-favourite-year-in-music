@@ -8,7 +8,7 @@ const locationObject = { hash: '' };
 const mockedNavigate = vi.fn();
 
 vi.mock('react-router-dom', async () => {
-  const router = await vi.importActual<typeof import('react-router-dom')>('react-router-dom');
+  const router = await vi.importActual('react-router-dom');
   return {
     ...router,
     useNavigate: () => mockedNavigate,

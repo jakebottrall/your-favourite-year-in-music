@@ -8,7 +8,7 @@ let locationObject = { hash: '' };
 const mockedNavigate = vi.fn();
 
 vi.mock('react-router-dom', async () => {
-  const router = await vi.importActual<typeof import('react-router-dom')>('react-router-dom');
+  const router = await vi.importActual('react-router-dom');
   return {
     ...router,
     useNavigate: () => mockedNavigate,
@@ -47,7 +47,7 @@ describe('<Callback/>', () => {
 
       render(<Callback onAuth={vi.fn()} />, { wrapper: BrowserRouter });
 
-      expect(localStorage.setItem).toHaveBeenCalledWith('access_token', 'asdf');
+      expect(spy).toHaveBeenCalledWith('access_token', 'asdf');
 
       spy.mockRestore();
     });
@@ -77,7 +77,7 @@ describe('<Callback/>', () => {
 
       render(<Callback onAuth={vi.fn()} />, { wrapper: BrowserRouter });
 
-      expect(localStorage.clear).toHaveBeenCalled();
+      expect(spy).toHaveBeenCalled();
 
       spy.mockRestore();
     });

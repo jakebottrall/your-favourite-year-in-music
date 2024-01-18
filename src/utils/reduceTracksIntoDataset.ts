@@ -1,6 +1,6 @@
-import { CalendarDatum } from '@nivo/calendar';
+import { type CalendarDatum } from '@nivo/calendar';
 import dayjs from 'dayjs';
-import { Track } from 'spotify-web-api-ts/types/types/SpotifyObjects';
+import { type Track } from 'spotify-web-api-ts/types/types/SpotifyObjects';
 
 export const reduceTracksIntoDataset = (tracks: Track[]) => {
   const dataset = tracks
