@@ -29,6 +29,14 @@
       "~/*": ["./src/*"],
     },
   },
-  "include": [".eslintrc.js", "vite.config.ts", "**/*.ts", "**/*.tsx", "**/*.js"],
+  "include": [
+    ".eslintrc.js",
+    "vite.config.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.js",
+    ".postcssrc.config.js",
+    "tailwind.config.js",
+  ],
   "exclude": ["node_modules"],
 }
