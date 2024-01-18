@@ -13,12 +13,12 @@
     "types": "tsc --noEmit"
   },
   "dependencies": {
-    "@nivo/calendar": "^0.83.1",
+    "@nivo/calendar": "^0.84.0",
     "dayjs": "^1.11.10",
+    "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.12.0",
     "react-router-dom": "^6.19.0",
-    "react": "^18.2.0",
     "spotify-web-api-ts": "^1.4.5"
   },
   "devDependencies": {
