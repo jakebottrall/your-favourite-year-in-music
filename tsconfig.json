@@ -31,12 +31,14 @@
   },
   "include": [
     ".eslintrc.js",
-    "vite.config.ts",
+    ".postcssrc.config.js",
+    ".prettierrc.js",
+    "**/*.js",
     "**/*.ts",
     "**/*.tsx",
-    "**/*.js",
-    ".postcssrc.config.js",
     "tailwind.config.js",
+    "vite.config.js",
+    "vitest.setup.ts",
   ],
   "exclude": ["node_modules"],
 }
