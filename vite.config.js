@@ -2,7 +2,7 @@
 import react from "@vitejs/plugin-react-swc";
 import { defineConfig } from "vite";
 
-const config = defineConfig({
+export default defineConfig({
   plugins: [react()],
   server: { port: 3000 },
   test: {
@@ -11,5 +11,3 @@ const config = defineConfig({
     setupFiles: "./vitest.setup.ts",
   },
 });
-
-module.exports = config;
