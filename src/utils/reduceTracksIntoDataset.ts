@@ -1,6 +1,6 @@
-import { type CalendarDatum } from '@nivo/calendar';
-import dayjs from 'dayjs';
-import { type Track } from 'spotify-web-api-ts/types/types/SpotifyObjects';
+import { type CalendarDatum } from "@nivo/calendar";
+import dayjs from "dayjs";
+import { type Track } from "spotify-web-api-ts/types/types/SpotifyObjects";
 
 export const reduceTracksIntoDataset = (tracks: Track[]) => {
   const dataset = tracks
@@ -8,8 +8,8 @@ export const reduceTracksIntoDataset = (tracks: Track[]) => {
       (a, c) => {
         const date = dayjs(c.album.release_date);
 
-        const year = date.format('YYYY');
-        const day = date.format('YYYY-MM-DD');
+        const year = date.format("YYYY");
+        const day = date.format("YYYY-MM-DD");
         const series = a.find((x) => x.year === year);
 
         if (!series) {

@@ -1,23 +1,23 @@
-import { render } from '@testing-library/react';
-import { describe, expect, it } from 'vitest';
-import { Loading } from './Loading';
+import { render } from "@testing-library/react";
+import { describe, expect, it } from "vitest";
+import { Loading } from "./Loading";
 
-describe('<Loading/>', () => {
-  it('renders', () => {
+describe("<Loading/>", () => {
+  it("renders", () => {
     const { container } = render(<Loading />);
     expect(container).toBeInTheDocument();
   });
 
-  describe('props: isLoading', () => {
-    describe('is falsey', () => {
-      it('returns null', () => {
+  describe("props: isLoading", () => {
+    describe("is falsey", () => {
+      it("returns null", () => {
         const { container } = render(<Loading />);
         expect(container).toBeEmptyDOMElement();
       });
     });
 
-    describe('is true', () => {
-      it('renders an element', () => {
+    describe("is true", () => {
+      it("renders an element", () => {
         const { container } = render(<Loading isLoading />);
         expect(container).not.toBeEmptyDOMElement();
       });

@@ -1,7 +1,7 @@
-import { useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { Loading } from '../components/Loading';
-import { spotifyApi } from '../services/spotifyApi';
+import { useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { Loading } from "../components/Loading";
+import { spotifyApi } from "../services/spotifyApi";
 
 interface CallbackProps {
   onAuth: () => void;
@@ -14,18 +14,18 @@ export const Callback = (props: CallbackProps) => {
   const { hash } = useLocation();
 
   useEffect(() => {
-    const hashParams = new URLSearchParams(hash.replace('#', '?'));
-    const accessToken = hashParams.get('access_token');
+    const hashParams = new URLSearchParams(hash.replace("#", "?"));
+    const accessToken = hashParams.get("access_token");
 
     if (accessToken) {
       onAuth();
-      localStorage.setItem('access_token', accessToken);
+      localStorage.setItem("access_token", accessToken);
       spotifyApi.setAccessToken(accessToken);
-      navigate('/');
+      navigate("/");
     } else {
       localStorage.clear();
-      spotifyApi.setAccessToken('');
-      navigate('/login');
+      spotifyApi.setAccessToken("");
+      navigate("/login");
     }
   }, [hash, navigate, onAuth]);
 

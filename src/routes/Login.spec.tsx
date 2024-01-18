@@ -1,14 +1,14 @@
-import { render, screen } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { Login } from './Login';
+import { render, screen } from "@testing-library/react";
+import { BrowserRouter } from "react-router-dom";
+import { beforeEach, describe, expect, it, vi } from "vitest";
+import { Login } from "./Login";
 
-const locationObject = { hash: '' };
+const locationObject = { hash: "" };
 
 const mockedNavigate = vi.fn();
 
-vi.mock('react-router-dom', async () => {
-  const router = await vi.importActual('react-router-dom');
+vi.mock("react-router-dom", async () => {
+  const router = await vi.importActual("react-router-dom");
   return {
     ...router,
     useNavigate: () => mockedNavigate,
@@ -20,32 +20,34 @@ beforeEach(() => {
   mockedNavigate.mockClear();
 });
 
-describe('<Login/>', () => {
-  it('renders', () => {
+describe("<Login/>", () => {
+  it("renders", () => {
     const { container } = render(<Login />, { wrapper: BrowserRouter });
     expect(container).toBeInTheDocument();
   });
 
-  it('contains a title', () => {
+  it("contains a title", () => {
     render(<Login />, { wrapper: BrowserRouter });
 
     expect(
-      screen.getByRole('heading', { name: /your Favourite Year In Music/i }),
+      screen.getByRole("heading", { name: /your Favourite Year In Music/i }),
     ).toBeInTheDocument();
   });
 
-  it('contains a link', () => {
+  it("contains a link", () => {
     render(<Login />, { wrapper: BrowserRouter });
-    expect(screen.getByRole('link', { name: /login with spotify/i })).toBeInTheDocument();
+    expect(
+      screen.getByRole("link", { name: /login with spotify/i }),
+    ).toBeInTheDocument();
   });
 
-  describe('props: isAuthed', () => {
+  describe("props: isAuthed", () => {
     it('redirects to the "/" when `true`', () => {
       render(<Login isAuthed />, { wrapper: BrowserRouter });
-      expect(mockedNavigate).toHaveBeenLastCalledWith('/');
+      expect(mockedNavigate).toHaveBeenLastCalledWith("/");
     });
 
-    it('does not redirect when `false`', () => {
+    it("does not redirect when `false`", () => {
       render(<Login />, { wrapper: BrowserRouter });
       expect(mockedNavigate).not.toHaveBeenCalled();
     });

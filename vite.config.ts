@@ -1,7 +1,7 @@
 /// <reference types="vitest" />
-import react from '@vitejs/plugin-react-swc';
-import dotenv from 'dotenv';
-import { defineConfig } from 'vite';
+import react from "@vitejs/plugin-react-swc";
+import dotenv from "dotenv";
+import { defineConfig } from "vite";
 
 dotenv.config();
 
@@ -10,8 +10,8 @@ export default defineConfig({
   plugins: [react()],
   server: { port: 3000 },
   test: {
-    environment: 'jsdom',
-    root: './',
-    setupFiles: './vitest.setup.ts',
+    environment: "jsdom",
+    root: "./",
+    setupFiles: "./vitest.setup.ts",
   },
 });

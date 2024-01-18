@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          ref: 'deployment'
+          ref: "deployment"
           fetch-depth: 0
 
       - name: Rebase with main
@@ -21,5 +21,5 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: 'deployment'
+          branch: "deployment"
           force: true

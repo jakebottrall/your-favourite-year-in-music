@@ -1,5 +1,5 @@
-import { type Track } from 'spotify-web-api-ts/types/types/SpotifyObjects';
-import { spotifyApi } from './spotifyApi';
+import { type Track } from "spotify-web-api-ts/types/types/SpotifyObjects";
+import { spotifyApi } from "./spotifyApi";
 
 export const getAllSavedTracks = async () => {
   const tracks: Track[] = [];
@@ -22,8 +22,8 @@ export const getAllSavedTracks = async () => {
   while (!complete) {
     const nextUrl = new URL(next);
     const nextSearchParams = new URLSearchParams(nextUrl.search);
-    const offset = Number(nextSearchParams.get('offset'));
-    const limit = Number(nextSearchParams.get('limit'));
+    const offset = Number(nextSearchParams.get("offset"));
+    const limit = Number(nextSearchParams.get("limit"));
 
     const nextPage = await spotifyApi.library.getSavedTracks({ offset, limit });
 

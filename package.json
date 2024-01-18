@@ -5,11 +5,11 @@
   "scripts": {
     "build": "bunx --bun vite build",
     "dev": "bunx --bun vite",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "release": "bun scripts/release.ts",
-    "test": "vitest",
-    "types": "tsc --noEmit"
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "types": "tsc --noEmit",
+    "test": "vitest"
   },
   "dependencies": {
     "@nivo/calendar": "^0.84.0",
