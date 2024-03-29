@@ -1,8 +1,25 @@
 import dayjs from "dayjs";
+import { exec } from "node:child_process";
+import fs from "node:fs";
+import { promisify } from "node:util";
 import prettier from "prettier";
 import packageJSON from "../package.json";
 
-const bumpVersions = async () => {
+const asyncExec = promisify(exec);
+
+try {
+  const version = await bumpVersions();
+  await commit(version);
+  await tag(version);
+  await push();
+  await createNewRelease(version);
+} catch (error) {
+  console.error(error);
+} finally {
+  process.exit();
+}
+
+async function bumpVersions() {
   const currentVersion = packageJSON.version;
   const currentVersionSplit = currentVersion.split(".");
 
@@ -26,60 +43,39 @@ const bumpVersions = async () => {
     ...packageJSON,
     version: nextVersion,
   });
+
   const prettierPackageJSON = await prettier.format(updatedPackageJSON, {
     parser: "json",
   });
 
-  await Bun.write(
-    `${import.meta.dir.replace("/scripts", "")}/package.json`,
-    prettierPackageJSON,
-  );
+  fs.writeFileSync(`package.json`, prettierPackageJSON);
 
   console.log("versions bumped ✅");
 
   return nextVersion;
-};
+}
 
-const commit = async (version: string) => {
+async function commit(version: string) {
   console.log("comitting changes...");
-  await Bun.spawn(["git", "add", "."]).exited;
-  await Bun.spawn(["git", "commit", "-m", `v${version}`]).exited;
+  await asyncExec("git add .");
+  await asyncExec(`git commit -m "v${version}"`);
   console.log("changes comitted ✅");
-};
+}
 
-const tag = async (version: string) => {
+async function tag(version: string) {
   console.log("tagging commit...");
-  await Bun.spawn(["git", "tag", "-a", `v${version}`, "-m", `${version}`])
-    .exited;
+  await asyncExec(`git tag -a v${version} -m ${version}`);
   console.log("commit tagged ✅");
-};
+}
 
-const push = async () => {
+async function push() {
   console.log("pushing changes...");
-  await Bun.spawn(["git", "push"]).exited;
+  await asyncExec("git push");
   console.log("changes pushed ✅");
-};
+}
 
-const createNewRelease = async (version: string) => {
+async function createNewRelease(version: string) {
   console.log("creating new release...");
-  await Bun.spawn([
-    "gh",
-    "release",
-    "create",
-    `v${version}`,
-    "--generate-notes",
-  ]).exited;
+  await asyncExec(`gh release create v${version} --generate-notes`);
   console.log("new release created ✅");
-};
-
-try {
-  const version = await bumpVersions();
-  await commit(version);
-  await tag(version);
-  await push();
-  await createNewRelease(version);
-} catch (error) {
-  console.error(error);
-} finally {
-  process.exit();
 }

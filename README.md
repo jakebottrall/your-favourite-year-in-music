@@ -86,7 +86,7 @@ To get a local copy up and running follow these simple example steps.
 ### Prerequisites
 
 - node
-- yarn
+- pnpm
 - spotify client id
 
 ### Installation
@@ -101,7 +101,7 @@ To get a local copy up and running follow these simple example steps.
    ```
 3. Install packages
    ```sh
-   yarn install
+   pnpm install
    ```
 4. Create a `.env`
    ```sh
@@ -114,7 +114,7 @@ To get a local copy up and running follow these simple example steps.
    ```
 6. Run it
    ```sh
-   yarn dev
+   pnpm dev
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
