@@ -16,8 +16,8 @@ FROM install AS prerelease
 COPY --from=install /temp/dev/node_modules node_modules
 COPY ./ ./
 
-ARG VITE_CLIENT_ID
-ARG VITE_REDIRECT_URI
+ARG VITE_SPOTIFY_CLIENT_ID
+ARG VITE_SPOTIFY_REDIRECT_URI
 
 RUN pnpm run build
 
