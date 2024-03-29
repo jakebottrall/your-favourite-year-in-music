@@ -1,7 +1,7 @@
 {
   "name": "your-favourite-year-in-music",
   "private": true,
-  "version": "2024.1.1",
+  "version": "2024.3.1",
   "type": "module",
   "packageManager": "pnpm@8.15.5",
   "scripts": {
@@ -48,7 +48,5 @@
     "vitest": "^1.2.1",
     "vitest-dom": "^0.1.1"
   },
-  "engines": {
-    "node": ">=20.11.0"
-  }
+  "engines": { "node": ">=20.11.0" }
 }
