@@ -4,7 +4,7 @@ interface CalendarChartProps {
   data: CalendarDatum[];
 }
 
-export const CalendarChart = (props: CalendarChartProps) => {
+export function CalendarChart(props: CalendarChartProps) {
   const { data } = props;
 
   return (
@@ -43,4 +43,4 @@ export const CalendarChart = (props: CalendarChartProps) => {
       ]}
     />
   );
-};
+}

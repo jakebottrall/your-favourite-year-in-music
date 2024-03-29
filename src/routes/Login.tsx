@@ -11,7 +11,7 @@ export interface LoginProps {
   isAuthed?: boolean;
 }
 
-export const Login = (props: LoginProps) => {
+export function Login(props: LoginProps) {
   const { isAuthed } = props;
 
   useRedirect(!!isAuthed, "/");
@@ -32,4 +32,4 @@ export const Login = (props: LoginProps) => {
       </a>
     </div>
   );
-};
+}

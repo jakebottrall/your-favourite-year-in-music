@@ -2,7 +2,7 @@ interface LoadingProps {
   isLoading?: boolean;
 }
 
-export const Loading = (props: LoadingProps) => {
+export function Loading(props: LoadingProps) {
   const { isLoading } = props;
 
   if (!isLoading) {
@@ -23,4 +23,4 @@ export const Loading = (props: LoadingProps) => {
       </div>
     </div>
   );
-};
+}

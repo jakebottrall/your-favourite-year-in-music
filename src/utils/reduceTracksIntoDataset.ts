@@ -2,7 +2,7 @@ import { type CalendarDatum } from "@nivo/calendar";
 import dayjs from "dayjs";
 import { type Track } from "spotify-web-api-ts/types/types/SpotifyObjects";
 
-export const reduceTracksIntoDataset = (tracks: Track[]) => {
+export function reduceTracksIntoDataset(tracks: Track[]) {
   const dataset = tracks
     .reduce(
       (a, c) => {
@@ -35,4 +35,4 @@ export const reduceTracksIntoDataset = (tracks: Track[]) => {
     .sort((a, b) => b.count - a.count);
 
   return dataset;
-};
+}

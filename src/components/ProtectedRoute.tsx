@@ -4,7 +4,7 @@ interface ProtectedRouteProps {
   isAuthed: boolean;
 }
 
-export const ProtectedRoute = (props: ProtectedRouteProps) => {
+export function ProtectedRoute(props: ProtectedRouteProps) {
   const { isAuthed } = props;
 
   if (!isAuthed) {
@@ -12,4 +12,4 @@ export const ProtectedRoute = (props: ProtectedRouteProps) => {
   }
 
   return <Outlet />;
-};
+}

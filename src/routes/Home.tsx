@@ -9,7 +9,7 @@ export interface HomeProps {
   onError: () => void;
 }
 
-export const Home = (props: HomeProps) => {
+export function Home(props: HomeProps) {
   const { onError } = props;
 
   const [favouriteYear, setFavouriteYear] = useState("1994");
@@ -65,4 +65,4 @@ export const Home = (props: HomeProps) => {
       <CalendarChart data={calendarData} />
     </div>
   );
-};
+}

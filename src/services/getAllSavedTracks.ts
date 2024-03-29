@@ -1,7 +1,7 @@
 import { type Track } from "spotify-web-api-ts/types/types/SpotifyObjects";
 import { spotifyApi } from "./spotifyApi";
 
-export const getAllSavedTracks = async () => {
+export async function getAllSavedTracks() {
   const tracks: Track[] = [];
 
   const initialPage = await spotifyApi.library.getSavedTracks({ limit: 50 });
@@ -37,4 +37,4 @@ export const getAllSavedTracks = async () => {
   }
 
   return tracks;
-};
+}

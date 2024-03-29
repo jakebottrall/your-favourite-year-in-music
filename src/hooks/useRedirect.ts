@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-export const useRedirect = (criteria: boolean, path: string) => {
+export function useRedirect(criteria: boolean, path: string) {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -9,4 +9,4 @@ export const useRedirect = (criteria: boolean, path: string) => {
       navigate(path);
     }
   }, [criteria, navigate, path]);
-};
+}

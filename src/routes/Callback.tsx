@@ -7,7 +7,7 @@ interface CallbackProps {
   onAuth: () => void;
 }
 
-export const Callback = (props: CallbackProps) => {
+export function Callback(props: CallbackProps) {
   const { onAuth } = props;
 
   const navigate = useNavigate();
@@ -30,4 +30,4 @@ export const Callback = (props: CallbackProps) => {
   }, [hash, navigate, onAuth]);
 
   return <Loading isLoading />;
-};
+}

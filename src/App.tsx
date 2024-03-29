@@ -12,7 +12,7 @@ if (accessToken) {
   spotifyApi.setAccessToken(accessToken);
 }
 
-export const App = () => {
+export function App() {
   const [isAuthed, setIsAuthed] = useState(!!accessToken);
 
   const handleError = () => {
@@ -34,4 +34,4 @@ export const App = () => {
       </Routes>
     </div>
   );
-};
+}
